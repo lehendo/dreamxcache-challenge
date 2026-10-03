@@ -1,0 +1,58 @@
+{
+  "about": "Two cheap follow-ups to the DDB1 negative-control anomaly. Both compare against 1000 random same-size draws from each *full* library (not the shortlist), using plain ECFP4 Tanimoto, so shortlist construction cannot create or hide an effect.",
+  "caveat": "Both use plain ECFP4 and the mean over hits, not ErG's own pharmacophoric representation and maximum aggregation. A ranking can show early recognition when a few hits sit very close to the anchor even if the mean is unremarkable, so these narrow the DDB1 question without closing it.",
+  "hit_clustering": {
+    "question": "Are the true hits chemically similar to each other?",
+    "statistic": "mean pairwise ECFP4 Tanimoto among the hits",
+    "LRRK2": {
+      "n_hits": 9,
+      "hit_mean": 0.1133,
+      "random_null": {
+        "mean": 0.1176,
+        "p50": 0.1171,
+        "p95": 0.1403,
+        "p99": 0.1522
+      },
+      "hit_percentile": 38.0
+    },
+    "DDB1": {
+      "n_hits": 21,
+      "hit_mean": 0.102,
+      "random_null": {
+        "mean": 0.1179,
+        "p50": 0.1175,
+        "p95": 0.1331,
+        "p99": 0.1391
+      },
+      "hit_percentile": 3.2
+    },
+    "reading": "DDB1's hits are more diverse than a random draw, the opposite of clustered. LRRK2's are unremarkable."
+  },
+  "anchor_similarity": {
+    "question": "Are the true hits similar to the anchor ligand used for the ErG control?",
+    "statistic": "mean ECFP4 Tanimoto of the hits to the anchor",
+    "LRRK2": {
+      "anchor": "A1AUU (PDB 9C61)",
+      "hit_mean": 0.09,
+      "random_null": {
+        "mean": 0.1193,
+        "p50": 0.1189,
+        "p95": 0.1427,
+        "p99": 0.1524
+      },
+      "hit_percentile": 1.3
+    },
+    "DDB1": {
+      "anchor": "A1DPN (PDB 37MF)",
+      "hit_mean": 0.1107,
+      "random_null": {
+        "mean": 0.1093,
+        "p50": 0.1095,
+        "p95": 0.1219,
+        "p99": 0.1264
+      },
+      "hit_percentile": 58.4
+    },
+    "reading": "LRRK2's hits are less similar to the anchor than 98.7% of random draws: the anchor is anti-correlated with the hits, which explains the below-null ErG result there. DDB1's hits are unremarkable by this measure, so it does not explain DDB1's elevated ErG LogAUC."
+  }
+}

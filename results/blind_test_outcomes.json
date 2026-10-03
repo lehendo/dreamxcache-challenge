@@ -1,0 +1,24 @@
+{
+  "about": "Blind-test outcomes of the two submissions. Both scored zero hits.",
+  "submissions": [
+    {
+      "name": "Submission 1: two-anchor ErG union",
+      "test_hits": 0,
+      "test_series": 0,
+      "ROC_AUC": 0.695,
+      "PR_AUC": 0.002,
+      "validation_before_submission": {
+        "series": 6,
+        "hits": 7
+      },
+      "method": "single-anchor pharmacophore similarity (ErG), top 40 compounds from one anchor and top 10 from another"
+    },
+    {
+      "name": "Submission 2: three-channel rank fusion",
+      "test_hits": 0,
+      "ROC_AUC": 0.705,
+      "PR_AUC": 0.002,
+      "method": "reciprocal rank fusion of Boltz-2 co-folding affinity, a water-mediated pharmacophore and a DEL classifier, greedy per-series diversity selection"
+    }
+  ]
+}

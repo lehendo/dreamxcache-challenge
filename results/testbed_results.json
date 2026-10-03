@@ -1,0 +1,201 @@
+{
+  "about": "Known-answer testbed results: each scoring channel run on a library whose true hits are known, with every metric re-expressed as a percentile of that library's own permutation null. The underlying libraries are not redistributed (see DATA.md); only aggregate metrics are shown here.",
+  "metrics": [
+    "EF@50",
+    "EF@1%",
+    "LogAUC"
+  ],
+  "null": {
+    "construction": "1000 noise rankings of the library, metrics computed on each; the null depends only on (n_total, n_hits).",
+    "seed": 42,
+    "n_permutations": 1000,
+    "percentile_definition": "percentage of null draws less than or equal to the observed value (100.0 = at or above every draw)",
+    "note": "These percentiles were computed against nulls drawn on each library's real label vector. A null regenerated from counts alone (scripts/empirical_null.py, summarized in results/empirical_null.json) agrees to within about 3 percentile points; the discrete metrics (EF@50, EF@1%) differ most."
+  },
+  "testbeds": {
+    "WDR91": {
+      "library": {
+        "n_total": 15419,
+        "n_hits": 19,
+        "kind": "full E-ASMS library, all compounds"
+      },
+      "target_note": "WD40-repeat protein-protein-interaction surface groove; shallow, no bridging waters in the reference pocket.",
+      "null_summary": {
+        "EF@50": {
+          "mean": 0.9414,
+          "p50": 0.0,
+          "p95": 16.2305,
+          "p99": 16.2305,
+          "max": 32.4611
+        },
+        "EF@1%": {
+          "mean": 1.0645,
+          "p50": 0.0,
+          "p95": 5.2697,
+          "p99": 10.5393,
+          "max": 21.0786
+        },
+        "LogAUC": {
+          "mean": 0.105,
+          "p50": 0.1012,
+          "p95": 0.15,
+          "p99": 0.1754,
+          "max": 0.217
+        }
+      },
+      "channels": {
+        "ErG similarity to the co-crystal ligand ZI8 (PDB 8SHJ, chain A)": {
+          "EF@50": {
+            "value": 0.0,
+            "null_percentile": 94.3
+          },
+          "EF@1%": {
+            "value": 0.0,
+            "null_percentile": 82.6
+          },
+          "LogAUC": {
+            "value": 0.1369,
+            "null_percentile": 89.1
+          },
+          "role": "negative control"
+        },
+        "Structure-based pharmacophore (reference ligand ZI8, PDB 8SHJ; 7 reference points, 2 feature types)": {
+          "EF@50": {
+            "value": 16.23,
+            "null_percentile": 94.3
+          },
+          "EF@1%": {
+            "value": 10.54,
+            "null_percentile": 99.7
+          },
+          "LogAUC": {
+            "value": 0.2176,
+            "null_percentile": 100.0
+          },
+          "confounds": [
+            "thinner model than a water-mediated pocket would give: no bridging-water or selectivity-residue points",
+            "shallow groove is a poorer fit for a pharmacophore than an enclosed pocket"
+          ],
+          "hits_in_top_50": 1,
+          "hits_in_top_1pct": 2
+        }
+      }
+    },
+    "LRRK2": {
+      "library": {
+        "n_total": 1500,
+        "n_hits": 9,
+        "kind": "shortlist: all known hits plus a seeded random sample of non-hits"
+      },
+      "target_note": "WD40 domain construct (UniProt Q5S007, residues 2141-2527).",
+      "null_summary": {
+        "EF@50": {
+          "mean": 0.9467,
+          "p50": 0.0,
+          "p95": 3.3333,
+          "p99": 6.6667,
+          "max": 10.0
+        },
+        "EF@1%": {
+          "mean": 0.9778,
+          "p50": 0.0,
+          "p95": 11.1111,
+          "p99": 11.1111,
+          "max": 22.2222
+        },
+        "LogAUC": {
+          "mean": 0.1358,
+          "p50": 0.1308,
+          "p95": 0.2147,
+          "p99": 0.2578,
+          "max": 0.3526
+        }
+      },
+      "channels": {
+        "Boltz-2 co-folding affinity (affinity_probability_binary; 1499 of 1500 compounds scored)": {
+          "EF@50": {
+            "value": 9.9933,
+            "null_percentile": 99.8
+          },
+          "EF@1%": {
+            "value": 0.0,
+            "null_percentile": 91.4
+          },
+          "LogAUC": {
+            "value": 0.3107,
+            "null_percentile": 99.7
+          }
+        },
+        "ErG similarity to the co-crystal ligand A1AUU (PDB 9C61)": {
+          "EF@50": {
+            "value": 0.0,
+            "null_percentile": 74.9
+          },
+          "EF@1%": {
+            "value": 0.0,
+            "null_percentile": 91.4
+          },
+          "LogAUC": {
+            "value": 0.0392,
+            "null_percentile": 0.2
+          },
+          "role": "negative control",
+          "caveat": "The anchor is anti-correlated with this library's hits (hit-to-anchor similarity at the 1.3rd percentile of a random-draw null; results/hit_structure_followups.json), so any anchor-similarity ranking fails here by construction. This is not independent evidence about ErG as a method."
+        }
+      }
+    },
+    "DDB1": {
+      "library": {
+        "n_total": 1500,
+        "n_hits": 21,
+        "kind": "shortlist: all known hits plus a seeded random sample of non-hits"
+      },
+      "target_note": "Full-length construct (UniProt Q16531, residues 1-1140). Boltz-2 was not run on this target.",
+      "null_summary": {
+        "EF@50": {
+          "mean": 0.9471,
+          "p50": 0.0,
+          "p95": 2.8571,
+          "p99": 4.2857,
+          "max": 5.7143
+        },
+        "EF@1%": {
+          "mean": 0.9381,
+          "p50": 0.0,
+          "p95": 4.7619,
+          "p99": 4.8095,
+          "max": 14.2857
+        },
+        "LogAUC": {
+          "mean": 0.1358,
+          "p50": 0.1332,
+          "p95": 0.1865,
+          "p99": 0.2102,
+          "max": 0.2526
+        }
+      },
+      "channels": {
+        "ErG similarity to the co-crystal ligand A1DPN (PDB 37MF)": {
+          "EF@50": {
+            "value": 1.4286,
+            "null_percentile": 85.3
+          },
+          "EF@1%": {
+            "value": 0.0,
+            "null_percentile": 81.4
+          },
+          "LogAUC": {
+            "value": 0.2156,
+            "null_percentile": 99.1
+          },
+          "role": "negative control",
+          "caveat": "LogAUC sits in the extreme tail of its own null, so this control is not clean. A hit-clustering test and an ECFP4 anchor-similarity test did not explain it (results/hit_structure_followups.json); an explanation in ErG's own feature space was not tested."
+        }
+      }
+    }
+  },
+  "reading_notes": [
+    "EF@50 is coarse and noisy at low hit counts: at 19 hits among 15,419 compounds, landing one hit in the top 50 by chance happens about 6% of the time. The pharmacophore's EF@50 sits at only the 94.3rd percentile, while its LogAUC and EF@1% are at or above essentially every null draw.",
+    "EF@1% is also discrete at these sizes (the median null value is 0); LogAUC is the most informative single metric here."
+  ]
+}
