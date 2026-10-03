@@ -1,0 +1,9 @@
+[
+  {"name": "aromatic_ring_1_chlorophenyl", "type": "aromatic", "xyz": [97.63683333, 55.24216667, 9.90766667], "cutoff": 2.5},
+  {"name": "aromatic_ring_2_phenyl",       "type": "aromatic", "xyz": [94.04733333, 50.43716667, 6.93966667], "cutoff": 2.5},
+  {"name": "amide_NH",                     "type": "hbond",    "xyz": [96.338, 53.372, 6.935],              "cutoff": 2.5},
+  {"name": "hydroxyl_OH",                  "type": "hbond",    "xyz": [96.428, 58.079, 14.354],             "cutoff": 2.5},
+  {"name": "oxetane_ether_O",              "type": "hbond",    "xyz": [96.584, 52.126, 3.871],              "cutoff": 2.5},
+  {"name": "amide_carbonyl_O",             "type": "hbond",    "xyz": [97.753, 52.056, 8.107],              "cutoff": 2.5},
+  {"name": "pyrrolidine_N",                "type": "hbond",    "xyz": [97.959, 57.138, 11.966],             "cutoff": 2.5}
+]
