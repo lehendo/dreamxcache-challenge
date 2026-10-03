@@ -3,6 +3,8 @@
 A pipeline for the **DREAM x CACHE Target2035 DEL-ML challenge**: predict binders of PGK2 from a DNA-encoded-library (DEL)
 selection, submitting 50 compounds per test split, scored on held-out mass-spectrometry hits. This repository is organized around what I learned, not around features. The code (labeling recipes, ranking channels, fusion, evaluation) is here so the findings can be checked and the methods reused. No data is included; see [DATA.md](DATA.md).
 
+Please note a full writeup of my work and approaches will only be made available after the competition is over. I have started working on Phase 2 of this challenge, but all of my work for that is private.
+
 ## Repository map
 
 ```
