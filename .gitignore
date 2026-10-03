@@ -1,0 +1,62 @@
+# ---------------------------------------------------------------------------
+# This repository ships NO data. Everything below exists so that data cannot be
+# added by accident. See DATA.md for how to obtain inputs yourself.
+#
+# AIRCHECK data is access-controlled (registration and approval): it must never
+# be committed, nor anything derived from it (score arrays, fingerprint
+# matrices, shortlists, per-compound result tables, trained models).
+# ---------------------------------------------------------------------------
+
+# Data and caches (the default locations)
+data/
+results-local/
+third_party/
+slurm_logs/
+
+# Tabular / array / binary data formats, anywhere in the tree
+*.parquet
+*.feather
+*.arrow
+*.h5
+*.hdf5
+*.h5ad
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.joblib
+*.sdf
+*.smi
+*.a3m
+*.fasta
+*.fa
+*.pdb
+*.cif
+*.mmcif
+*.zip
+*.tar
+*.tar.gz
+*.gz
+*.csv
+*.tsv
+*.txt
+
+# The only text files that belong in the repository besides source and docs.
+!requirements*.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
